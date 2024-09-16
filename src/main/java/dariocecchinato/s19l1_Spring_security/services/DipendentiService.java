@@ -33,9 +33,8 @@ public class DipendentiService {
 
     public Dipendente save (DipendentePayloadDTO body){
         if (dipendentiReporitory.existsByEmail(body.email()))throw new BadRequestException("L' email " + body.email() + " è già in uso");
-        String password= "1234";
         String avatar = "https://ui-avatars.com/api/?name="+body.nome()+"+"+body.cognome();
-        Dipendente newDipendente = new Dipendente(body.username(), body.nome(), body.cognome(), body.email(), avatar,password);
+        Dipendente newDipendente = new Dipendente(body.username(), body.nome(), body.cognome(), body.email(), avatar, body.password());
         return dipendentiReporitory.save(newDipendente);
     }
     public Dipendente findDipendenteById(UUID dipendenteId){
@@ -44,8 +43,8 @@ public class DipendentiService {
         return found;
     }
     public Dipendente findDipendenteByUsername(String username){
-        Dipendente found = this.dipendentiReporitory.findByUsername(username).orElseThrow(()-> new NotFoundException(username));
-        return found;
+        return this.dipendentiReporitory.findByUsername(username).orElseThrow(()-> new NotFoundException(username));
+
     }
 
     public Dipendente findByIdAndUpdate(UUID dipendenteId, DipendentePayloadDTO body){

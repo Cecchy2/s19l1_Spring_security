@@ -16,4 +16,9 @@ public record DipendentePayloadDTO(
          String cognome,
         @NotEmpty(message = "Devi inserire una email")
         @Email(message = "Devi inserire una email valida")
-         String email){}
+         String email,
+        @NotEmpty(message = "Devi inserire una email")
+        String password)
+
+{}
+
