@@ -29,7 +29,7 @@ public class DipendentiController {
         return this.dipendentiService.findAll(page, size, sortby);
             }
 
-            @PostMapping
+            /*@PostMapping
             @ResponseStatus(HttpStatus.CREATED)
     public DipendenteResponseDTO saveDipendente(@RequestBody @Validated DipendentePayloadDTO body, BindingResult validationResult){
                 if (validationResult.hasErrors()){
@@ -38,7 +38,7 @@ public class DipendentiController {
                 }else {
                     return new DipendenteResponseDTO(this.dipendentiService.save(body).getId());
                 }
-            }
+            }*/
 
             @GetMapping("/{dipendenteId}")
     public Dipendente findById(@PathVariable UUID dipendenteId){
